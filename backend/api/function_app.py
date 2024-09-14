@@ -7,7 +7,6 @@ import logging
 import json
 from azure.cosmos import CosmosClient, exceptions
 
-# setting up cosmos db account connections to database and container
 connection_string = os.environ["AzureConnectionString"]
 client = CosmosClient.from_connection_string(connection_string)
 
@@ -20,12 +19,12 @@ item_id = "1"  # Assuming the item ID is "1"
 database = client.get_database_client(database_name)
 container = database.get_container_client(container_name)
 
+
 app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
 
-@app.route(route="counttrigger")
-def testpython(req: func.HttpRequest) -> func.HttpResponse:
+@app.route(route="resumecounter")
+def resumecounter(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
-
     try:
         # Read the item from the container using a query
         #query = f"SELECT * FROM c WHERE c.id = '{item_id}'"

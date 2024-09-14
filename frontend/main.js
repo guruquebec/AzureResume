@@ -1,7 +1,7 @@
 window.addEventListener('DOMContentLoaded',(event)=> {
     getHitCount();
 })
-const funcApi = 'http://localhost:7071/api/counttrigger';
+const funcApi = 'http://localhost:7071/api/resumecounter';
 
 const getHitCount = () =>{
 let count = 40;
