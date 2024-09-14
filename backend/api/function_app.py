@@ -21,7 +21,7 @@ container = database.get_container_client(container_name)
 
 
 app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
-
+@app.function_name (name="countresume")
 @app.route(route="resumecounter")
 def resumecounter(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
