@@ -9,7 +9,6 @@ from azure.cosmos import CosmosClient, exceptions
 
 connection_string = os.environ["AzureConnectionString"]
 client = CosmosClient.from_connection_string(connection_string)
-
 # In the database, defining the actual container
 database_name = "AzureResume"
 container_name = "Counter"
@@ -21,9 +20,10 @@ container = database.get_container_client(container_name)
 
 
 app = func.FunctionApp(http_auth_level=func.AuthLevel.FUNCTION)
-@app.function_name (name="func-resumecount")
-@app.route(route="resumecounter")
-def resumecounter(req: func.HttpRequest) -> func.HttpResponse:
+
+@app.function_name (name="resumecount")
+@app.route(route="resumecount")
+def resumecount(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
     try:
         # Read the item from the container using a query
@@ -52,7 +52,7 @@ def resumecounter(req: func.HttpRequest) -> func.HttpResponse:
         body=json.dumps({"count": updated_count}), 
         mimetype='application/json',
         status_code=200
-    )
+        )
 
     except exceptions.CosmosHttpResponseError as e:
         logging.error(f"An error occurred: {e.message}")
