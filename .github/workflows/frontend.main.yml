@@ -1,10 +1,12 @@
 name: deploy_frontend
+# ci cd in front end, whenever the push is made, this yml will be triggered to do the continous workflow
 
 on:
     push:
         branches: [ main ]
         paths:
-        - "frontend/**"
+        - 'frontend/**'
+
 
 jobs:
   build:
