@@ -24,7 +24,7 @@ jobs:
       uses: azure/CLI@v1
       with:
         inlineScript: |
-           az cdn endpoint purge --content-paths  "/*" --profile-name "resumecdn" --name "resumecdn" --resource-group "myresumeRG"
+           az cdn endpoint purge --content-paths  "/*" --profile-name "resumecdn" --name "resumecdn" --resource-group "myresumeRG" --account-key "DrW6oAAlGgrFm/gAlYVCCY7u+4iEX1/A3AeuiY8hDYRFQi3yqhGEk8tQeRhVFP8yindstY85ExtC+AStz1erCQ=="
 
   # Azure logout
     - name: logout
